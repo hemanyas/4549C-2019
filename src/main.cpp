@@ -82,8 +82,6 @@ void opcontrol()
  {
 
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
-
-//joysticks
 	while (true) {
 		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
 		                 (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
@@ -108,58 +106,42 @@ printf("left_mtr %f\n" , left_mtr.get_position());
 printf("right_mtr %f\n" , right_mtr.get_position());
 printf("backright_mtr %f\n" , backright_mtr.get_position());
 printf("backleft_mtr %f\n" , backleft_mtr.get_position());
-
-
-if(master.get_digital(DIGITAL_R1))
-{
-	claw_mtr = 50;
-	printf("clawmtr is 50 \n" );
-}
-
-else if(master.get_digital(DIGITAL_R2))
-{
-	claw_mtr = -50;
-	printf("clawmtr is -50 \n" );
-
-}
-
-else
-{
-	claw_mtr = 0;
-}
-
-
-
-
+		
 
 if(master.get_digital(DIGITAL_L1))
 {
-	arm_left_mtr = 50;
-	arm_right_mtr = 50;
+myDR4Bdrive(50);
 }
 else if(master.get_digital(DIGITAL_L2))
 {
-	arm_left_mtr = -50;
-	arm_right_mtr = -50;
+myDR4Bdrive(-50);
 }
-
 else
 {
-	arm_left_mtr = 0;
-	arm_right_mtr = 0;
-	arm_left_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-	arm_right_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+dr4b_mtr = 0
+}
+		
+		
+if(master.get_digital(DIGITAL_R1))
+{
+arm_left_mtr = 50;
+arm_right_mtr = 50;
+}
+else if(master.get_digital(DIGITAL_R2))
+{
+arm_left_mtr = -50;
+arm_right_mtr = -50;
+}
+else
+{
+arm_left_mtr = 0;
+arm_right_mtr = 0;
+arm_left_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+arm_right_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 }
 pros::delay(20);
-	}
-
-
 }
-
-
-
-
-
+}
 
 
 
@@ -168,31 +150,4 @@ void autonomous()
 {
 
 myPIDforward(200);
-// myPIDclaw(850);
-// myPIDarm(200);
-// pros::delay(1000);
-// myPIDforward(-750);
-// pros::delay(1000);
-// myLEFT(200,400);
-// pros::delay(1000);
-// myPIDforward(800);
-// pros::delay(100);
-// myPIDclaw(-300);
-// pros::delay(1000);
-// myPIDforward(-800);
-// pros::delay(1000);
-// myPIDarm(-200);
-// myRIGHT(200,400);
-// pros::delay(1000);
-// myPIDforward(1000);
-// myPIDclaw(300);
-// myPIDforward(-1000);
-// myLEFT(200,400);
-// myPIDforward(800);
-// myPIDclaw(-300);
-
-// myLEFT(200,-400);
-
-
-
 }
