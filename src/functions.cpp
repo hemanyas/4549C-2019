@@ -72,9 +72,9 @@ float power;
 float kP = 1;
 do
 {
-float average = (dr4bl_mtr.get_position() + dr4br_mtr.getposition()) /2;
+float average = (dr4bl_mtr.get_position() + dr4br_mtr.get_position()) /2;
 float error = setpoint - average;
-float power = error*kp;
+float power = error*kP;
 dr4bl_mtr = power;
 dr4br_mtr = power;
 pros::delay(20);
@@ -85,25 +85,7 @@ dr4bl_mtr.move(0);
 dr4br_mtr.move(0);
 }
 
-void myDR4Bdrive(float setpoint);
-{
-float error;
-float power;
-float kP = 1;
-do
-{
-float average = (dr4bl_mtr.get_position() + dr4br_mtr.getposition()) /2;
-float error = setpoint - average;
-float power = error*kp;
-dr4bl_mtr = power;
-dr4br_mtr = power;
-pros::delay(20);
-}while(fabs(error) > 20);
-dr4bl_mtr.tare_position();
-dr4br_mtr.tare_position();
-dr4bl_mtr.move(0);
-dr4br_mtr.move(0);
-}
+
 
 
 void myPIDclaw(float setpoint)

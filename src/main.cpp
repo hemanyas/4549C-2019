@@ -80,67 +80,71 @@ void competition_initialize() {}
 
 void opcontrol()
  {
-
-	pros::Controller master(pros::E_CONTROLLER_MASTER);
-	while (true) {
-		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
-		                 (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
-		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
-		int left = master.get_analog(ANALOG_LEFT_Y);
-		int right = -(master.get_analog(ANALOG_RIGHT_Y));
-
-
-		left_mtr = left;
-		right_mtr = -right;
-		backleft_mtr = left;
-		backright_mtr = -right;
+	 pros::Controller master(pros::E_CONTROLLER_MASTER);
+ 	while (true) {
+ 		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
+ 		                 (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
+ 		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
+ 		int left = master.get_analog(ANALOG_LEFT_Y);
+ 		int right = -(master.get_analog(ANALOG_RIGHT_Y));
 
 
+ 		left_mtr = left;
+ 		right_mtr = -right;
+ 		backleft_mtr = left;
+ 		backright_mtr = -right;
 
-left_mtr.get_position();
-right_mtr.get_position();
-backright_mtr.get_position();
-backleft_mtr.get_position();
 
-printf("left_mtr %f\n" , left_mtr.get_position());
-printf("right_mtr %f\n" , right_mtr.get_position());
-printf("backright_mtr %f\n" , backright_mtr.get_position());
-printf("backleft_mtr %f\n" , backleft_mtr.get_position());
-		
 
-if(master.get_digital(DIGITAL_L1))
-{
-myDR4Bdrive(50);
-}
-else if(master.get_digital(DIGITAL_L2))
-{
-myDR4Bdrive(-50);
-}
-else
-{
-dr4b_mtr = 0
-}
-		
-		
-if(master.get_digital(DIGITAL_R1))
-{
-arm_left_mtr = 50;
-arm_right_mtr = 50;
-}
-else if(master.get_digital(DIGITAL_R2))
-{
-arm_left_mtr = -50;
-arm_right_mtr = -50;
-}
-else
-{
-arm_left_mtr = 0;
-arm_right_mtr = 0;
-arm_left_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-arm_right_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-}
-pros::delay(20);
-}
+ left_mtr.get_position();
+ right_mtr.get_position();
+ backright_mtr.get_position();
+ backleft_mtr.get_position();
+
+ printf("left_mtr %f\n" , left_mtr.get_position());
+ printf("right_mtr %f\n" , right_mtr.get_position());
+ printf("backright_mtr %f\n" , backright_mtr.get_position());
+ printf("backleft_mtr %f\n" , backleft_mtr.get_position());
+
+
+ if(master.get_digital(DIGITAL_L1))
+ {
+dr4bl_mtr = 50;
+ }
+ else if(master.get_digital(DIGITAL_L2))
+ {
+dr4br_mtr = 50;
+ }
+ else
+ {
+ dr4br_mtr = 0;
+ dr4bl_mtr = 0;
+ }
+
+
+ }
+
+
+
+// if(master.get_digital(DIGITAL_R1))
+// {
+// arm_left_mtr = 50;
+// arm_right_mtr = 50;
+// }
+// else if(master.get_digital(DIGITAL_R2))
+// {
+// arm_left_mtr = -50;
+// arm_right_mtr = -50;
+// }
+// else
+// {
+// arm_left_mtr = 0;
+// arm_right_mtr = 0;
+// arm_left_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+// arm_right_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+// }
+// pros::delay(20);
+// }
 }
 
 
