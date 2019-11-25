@@ -11,6 +11,7 @@ float kP = 0.45;
 float average = (left_mtr.get_position() + right_mtr.get_position() + backright_mtr.get_position() + backleft_mtr.get_position()) / 4;
 error = setpoint - average;
 power = error*kP;
+// test change
 printf("power_forward %f\n" , power);
 printf("error_forward %f\n" , error);
 printf("average_forward %f\n" , average);
@@ -68,14 +69,14 @@ void myPIDdr4b(float setpoint)
 {
 float error;
 float power;
-float kP = 1;	
+float kP = 1;
 do
 {
 float average = (dr4bl_mtr.get_position() + dr4br_mtr.getposition()) /2;
 float error = setpoint - average;
-float power = error*kp;	
+float power = error*kp;
 dr4bl_mtr = power;
-dr4br_mtr = power;	
+dr4br_mtr = power;
 pros::delay(20);
 }while(fabs(error) > 20);
 dr4bl_mtr.tare_position();
@@ -89,13 +90,13 @@ void myDR4Bdrive(float setpoint);
 float error;
 float power;
 float kP = 1;
-do 
+do
 {
 float average = (dr4bl_mtr.get_position() + dr4br_mtr.getposition()) /2;
 float error = setpoint - average;
-float power = error*kp;	
+float power = error*kp;
 dr4bl_mtr = power;
-dr4br_mtr = power;	
+dr4br_mtr = power;
 pros::delay(20);
 }while(fabs(error) > 20);
 dr4bl_mtr.tare_position();
