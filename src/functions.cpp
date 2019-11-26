@@ -69,16 +69,16 @@ void myPIDdr4b(float setpoint)
 {
 float error;
 float power;
-float kP = 1;
+float kP = 0.45;
 do
 {
 float average = (dr4bl_mtr.get_position() + dr4br_mtr.get_position()) /2;
-float error = setpoint - average;
-float power = error*kP;
+error = setpoint - average;
+power = error*kP;
 dr4bl_mtr = power;
 dr4br_mtr = power;
 pros::delay(20);
-}while(fabs(error) > 20);
+}while(fabs(error) > 5);
 dr4bl_mtr.tare_position();
 dr4br_mtr.tare_position();
 dr4bl_mtr.move(0);

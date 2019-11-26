@@ -109,17 +109,31 @@ void opcontrol()
 
  if(master.get_digital(DIGITAL_L1))
  {
-dr4bl_mtr = 50;
+	 myPIDdr4b(50);
  }
- else if(master.get_digital(DIGITAL_L2))
+ else if (master.get_digital(DIGITAL_L2))
  {
-dr4br_mtr = 50;
+	 myPIDdr4b(-50);
  }
  else
  {
  dr4br_mtr = 0;
  dr4bl_mtr = 0;
  }
+//
+//
+// if (master.get_digital(DIGITAL_R1))
+// {
+// 	claw_mtr = 50;
+// }
+// else if (master.get_digital(DIGITAL_R2))
+// {
+// 	claw_mtr = 50;
+// }
+// else
+// {
+// claw_mtr = 0;
+// }
 
 
  }
@@ -153,5 +167,5 @@ dr4br_mtr = 50;
 void autonomous()
 {
 
-myPIDforward(200);
+myPIDdr4b(200);
 }
