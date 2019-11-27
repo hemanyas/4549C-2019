@@ -101,40 +101,36 @@ void opcontrol()
  backright_mtr.get_position();
  backleft_mtr.get_position();
 
- printf("left_mtr %f\n" , left_mtr.get_position());
- printf("right_mtr %f\n" , right_mtr.get_position());
- printf("backright_mtr %f\n" , backright_mtr.get_position());
- printf("backleft_mtr %f\n" , backleft_mtr.get_position());
-
 
  if(master.get_digital(DIGITAL_L1))
  {
-	 myPIDdr4b(50);
+	 myPIDdr4b(100);
  }
  else if (master.get_digital(DIGITAL_L2))
  {
-	 myPIDdr4b(-50);
+	 myPIDdr4b(-100);
  }
  else
  {
  dr4br_mtr = 0;
  dr4bl_mtr = 0;
  }
-//
-//
-// if (master.get_digital(DIGITAL_R1))
-// {
-// 	claw_mtr = 50;
-// }
-// else if (master.get_digital(DIGITAL_R2))
-// {
-// 	claw_mtr = 50;
-// }
-// else
-// {
-// claw_mtr = 0;
-// }
+ pros::delay(20);
 
+
+if (master.get_digital(DIGITAL_R1))
+{
+	claw_mtr = 50;
+}
+else if (master.get_digital(DIGITAL_R2))
+{
+	claw_mtr = -50;
+}
+else
+{
+claw_mtr = 0;
+}
+pros::delay(20);
 
  }
 
@@ -158,7 +154,6 @@ void opcontrol()
 // arm_right_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 // }
 // pros::delay(20);
-// }
 }
 
 

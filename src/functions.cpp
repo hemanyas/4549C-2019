@@ -43,11 +43,11 @@ do
 float average = (left_mtr.get_position() + right_mtr.get_position()+ backright_mtr.get_position() + backleft_mtr.get_position()) / 4;
 error = (setpoint*ticks_to_deg) - average;
 power = error*kP;
-printf("power %f\n" , power);
-printf("error %f\n" , error);
-printf("average %f\n" , average);
-printf("setoiubt %f\n" , (setpoint*ticks_to_deg));
-printf("left_mtr %f\n" , left_mtr.get_position());
+// printf("power %f\n" , power);
+// printf("error %f\n" , error);
+// printf("average %f\n" , average);
+// printf("setoiubt %f\n" , (setpoint*ticks_to_deg));
+// printf("left_mtr %f\n" , left_mtr.get_position());
 left_mtr = -power;
 right_mtr = power;
 backleft_mtr = -power;
@@ -69,7 +69,7 @@ void myPIDdr4b(float setpoint)
 {
 float error;
 float power;
-float kP = 0.45;
+float kP = 1;
 do
 {
 float average = (dr4bl_mtr.get_position() + dr4br_mtr.get_position()) /2;
@@ -96,8 +96,8 @@ float kP = 1;
 do
 {
 float average = (claw_mtr.get_position());
-float eroor = setpoint - average;
-float power = error*kP;
+error = setpoint - average;
+power = error*kP;
 claw_mtr= power;
 pros::delay(20);
 }while(fabs(error)> 20);

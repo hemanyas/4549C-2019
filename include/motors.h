@@ -8,7 +8,7 @@
 #define BACKRIGHT_MTR 10
 #define DR4BL_MTR 6
 #define DR4BR_MTR 5
-#define CLAW_MTR 12
+#define CLAW_MTR 4
 
 #define REVERSE 1
 #define NOT_REVERSE 0
