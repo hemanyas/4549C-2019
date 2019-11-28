@@ -104,11 +104,13 @@ void opcontrol()
 
  if(master.get_digital(DIGITAL_L1))
  {
-	 myPIDdr4b(100);
+	 dr4bl_mtr.move(100);
+	 dr4br_mtr.move(100);
  }
  else if (master.get_digital(DIGITAL_L2))
  {
-	 myPIDdr4b(-100);
+	 dr4bl_mtr.move(-20);
+	 dr4br_mtr.move(-20);
  }
  else
  {
@@ -161,6 +163,5 @@ pros::delay(20);
 
 void autonomous()
 {
-
 myPIDdr4b(200);
 }
