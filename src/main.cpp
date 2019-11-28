@@ -102,12 +102,26 @@ void opcontrol()
  backleft_mtr.get_position();
 
 
- if(master.get_digital(DIGITAL_L1))
+if(master.get_digital(DIGITAL_L1))
+{
+	intake_mtr.move(50);
+}
+else if (master.get_digital(DIGITAL_L2))
+{
+	intake_mtr.move(-50);
+}
+else
+{
+	intake_mtr = 0;
+}
+pros::delay(20);
+
+ if(master.get_digital(DIGITAL_R1))
  {
 	 dr4bl_mtr.move(100);
 	 dr4br_mtr.move(100);
  }
- else if (master.get_digital(DIGITAL_L2))
+ else if (master.get_digital(DIGITAL_R2))
  {
 	 dr4bl_mtr.move(-20);
 	 dr4br_mtr.move(-20);
@@ -120,11 +134,11 @@ void opcontrol()
  pros::delay(20);
 
 
-if (master.get_digital(DIGITAL_R1))
+if (master.get_digital(DIGITAL_X))
 {
 	claw_mtr = 50;
 }
-else if (master.get_digital(DIGITAL_R2))
+else if (master.get_digital(DIGITAL_B))
 {
 	claw_mtr = -50;
 }
