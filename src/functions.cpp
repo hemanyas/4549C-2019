@@ -7,6 +7,7 @@ void myPIDforward(float setpoint)
 float error;
 float power;
 float kP = 0.45;
+float kI
 {
 float average = (left_mtr.get_position() + right_mtr.get_position() + backright_mtr.get_position() + backleft_mtr.get_position()) / 4;
 error = setpoint - average;
@@ -28,6 +29,14 @@ left_mtr.move(0);
 right_mtr.move(0);
 backleft_mtr.move(0);
 backright_mtr.move(0);
+
+while (fabs(error) > 10)
+{
+ error = setpoint – average;
+ integral = integral + error;
+ power = error*kP + integral*kI;
+  wait 15 mSec;
+}
 }
 
 
