@@ -116,22 +116,21 @@ else
 }
 pros::delay(20);
 
- if(master.get_digital(DIGITAL_R1))
+ while(master.get_digital(DIGITAL_R1))
  {
-	 dr4bl_mtr.move(100);
-	 dr4br_mtr.move(100);
+	myPIDdr4b(300);
+
  }
- else if (master.get_digital(DIGITAL_R2))
- {
-	 dr4bl_mtr.move(-20);
-	 dr4br_mtr.move(-20);
- }
- else
- {
- dr4br_mtr = 0;
- dr4bl_mtr = 0;
- }
- pros::delay(20);
+ // else if (master.get_digital(DIGITAL_R2))
+ // {
+	//  myPIDdr4b(-100);
+ // }
+ // else
+ // {
+ // dr4br_mtr = 0;
+ // dr4bl_mtr = 0;
+ // }
+ // pros::delay(20);
 
 
 if (master.get_digital(DIGITAL_X))
