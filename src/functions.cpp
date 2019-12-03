@@ -2,33 +2,33 @@
 #include"motors.h"
 #include "functions.h"
 
-void myPIDforward(float setpoint)
+void PIDforward(float setpoint)
 {
-  float error;
-  float power;
-  float kP = 0.45;
+float error;
+float power;
+float kP = 0.45;
 do
-  {
-  float average = (left_mtr.get_position() + right_mtr.get_position() + backright_mtr.get_position() + backleft_mtr.get_position()) / 4;
-  error = setpoint - average;
-  power = error*kP;
-  printf("power_forward %f\n" , power);
-  printf("error_forward %f\n" , error);
-  printf("average_forward %f\n" , average);
-  left_mtr = power;
-  right_mtr = power;
-  backleft_mtr = power;
-  backright_mtr = power;
-  pros::delay(20);
-  }while(fabs(error) > 10);
-  left_mtr.tare_position();
-  right_mtr.tare_position();
-  backleft_mtr.tare_position();
-  backright_mtr.tare_position();
-  left_mtr.move(0);
-  right_mtr.move(0);
-  backleft_mtr.move(0);
-  backright_mtr.move(0);
+{
+float average = (left_mtr.get_position() + right_mtr.get_position() + backright_mtr.get_position() + backleft_mtr.get_position()) / 4;
+error = setpoint - average;
+power = error*kP;
+printf("power_forward %f\n" , power);
+printf("error_forward %f\n" , error);
+printf("average_forward %f\n" , average);
+left_mtr = power;
+right_mtr = power;
+backleft_mtr = power;
+backright_mtr = power;
+pros::delay(20);
+}while(fabs(error) > 10);
+left_mtr.tare_position();
+right_mtr.tare_position();
+backleft_mtr.tare_position();
+backright_mtr.tare_position();
+left_mtr.move(0);
+right_mtr.move(0);
+backleft_mtr.move(0);
+backright_mtr.move(0);
 }
 
 // while (fabs(error) > 10)
@@ -41,7 +41,7 @@ do
 
 
 
-void myPIDleft(float setpoint)
+void PIDleft(float setpoint)
 {
 float error;
 float power;
@@ -74,7 +74,7 @@ backright_mtr.move(0);
 }
 
 
-void myPIDdr4b(float setpoint)
+void PIDdr4b(float setpoint)
 {
 float error;
 float power;
@@ -95,7 +95,7 @@ dr4br_mtr.move(0);
 }
 
 
-void myPIDclaw(float setpoint)
+void PIDclaw(float setpoint)
 {
 float error;
 float power;
@@ -113,19 +113,7 @@ claw_mtr.move(0);
 }
 
 
-// void myPIDintake(float setpoint);
-// {
-//   float error;
-//   float power;
-//   float kP = 1;
-// do
-//   {
-//   float average = (intake_mtr.get_position());
-//   error = setpoint - average;
-//   power = error*kP;
-//   intake_mtr = power;
-//   pros::delay(20);
-// }while(fabs(error)>5);
-// intake_mtr.tare_position();
-// intake_mtr.move(0);
-// }
+void myintake(float p, float v)
+{
+
+}
