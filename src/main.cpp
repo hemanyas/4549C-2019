@@ -118,12 +118,17 @@ pros::delay(20);
 //dr4b control
 if (master.get_digital(DIGITAL_R1))
  {
-	 dr4bl_mtr = 100;
-	 dr4br_mtr = 100;
+	 dr4bl_mtr = 400;
+	 dr4br_mtr = 400;
+	 dr4bl_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	 dr4br_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
  }
  else if (master.get_digital(DIGITAL_R2))
  {
-	 myPIDdr4b(-100);
+	 dr4bl_mtr = -150;
+	 dr4br_mtr = -150;
+	 dr4bl_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	 dr4bl_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
  }
  else
  {
@@ -173,9 +178,9 @@ pros::delay(20);
 
 
 
-void autonomous()
-{
-PIDintake(100);
-PIDdr4b(200);
-PIDclaw(50);
-}
+// void autonomous()
+// {
+// PIDintake(100);
+// PIDdr4b(200);
+// PIDclaw(50);
+// }
