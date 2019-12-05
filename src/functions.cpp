@@ -39,8 +39,6 @@ backright_mtr.move(0);
 //   wait 15 mSec;
 // }
 
-
-
 void PIDleft(float setpoint)
 {
 float error;
@@ -113,7 +111,7 @@ claw_mtr.move(0);
 }
 
 
-void myintake(float p, float v)
+void myintake(float d, float v)
 {
-
+intake_mtr.move_relative(d,v);
 }

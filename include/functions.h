@@ -4,12 +4,11 @@
 #include "main.h"
 #include"motors.h"
 
-void myPIDforward (float setpoint);
-void myPIDleft(float setpoint);
-void myPIDdr4b(float setpoint);
-void myDR4Bdrive(float setpoint);
-void myPIDclaw(float setpoint);
-void myintake(float setpoint);
+void PIDforward (float setpoint);
+void PIDleft(float setpoint);
+void PIDdr4b(float setpoint);
+void PIDclaw(float setpoint);
+void myintake(float d, float v);
 
 
 #endif

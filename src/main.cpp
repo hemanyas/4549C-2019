@@ -125,8 +125,8 @@ if (master.get_digital(DIGITAL_R1))
  }
  else if (master.get_digital(DIGITAL_R2))
  {
-	 dr4bl_mtr = -150;
-	 dr4br_mtr = -150;
+	 dr4bl_mtr = -50;
+	 dr4br_mtr = -50;
 	 dr4bl_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 	 dr4bl_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
  }
@@ -178,9 +178,8 @@ pros::delay(20);
 
 
 
-// void autonomous()
-// {
-// PIDintake(100);
-// PIDdr4b(200);
-// PIDclaw(50);
-// }
+void autonomous()
+{
+PIDforward(500);
+PIDclaw
+}
