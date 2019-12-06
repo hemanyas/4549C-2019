@@ -90,9 +90,9 @@ void opcontrol()
 
 
  		left_mtr = left;
- 		right_mtr = -right;
- 		backleft_mtr = left;
- 		backright_mtr = -right;
+ 		right_mtr = right;
+ 		backleft_mtr = -left;
+ 		backright_mtr = right;
 
 
 
@@ -102,31 +102,32 @@ void opcontrol()
  backleft_mtr.get_position();
 
 //intake control
-if(master.get_digital(DIGITAL_L1))
+if(master.get_digital(DIGITAL_R1))
 {
-	intake_mtr.move(50);
+	claw_mtr.move(50);
 }
-else if (master.get_digital(DIGITAL_L2))
+else if (master.get_digital(DIGITAL_R2))
 {
-	intake_mtr.move(-50);
+	claw_mtr.move(-50);
 }
 else
 {
-	intake_mtr = 0;
+	claw_mtr = 0;
 }
 pros::delay(20);
 //dr4b control
-if (master.get_digital(DIGITAL_R1))
+if (master.get_digital(DIGITAL_L1))
  {
 	 dr4bl_mtr = 400;
 	 dr4br_mtr = 400;
+	 printf("dr4br_mtr %f\n", dr4br_mtr.get_position());
 	 dr4bl_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 	 dr4br_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
  }
- else if (master.get_digital(DIGITAL_R2))
+ else if (master.get_digital(DIGITAL_L2))
  {
-	 dr4bl_mtr = -50;
-	 dr4br_mtr = -50;
+	 dr4bl_mtr = -20;
+	 dr4br_mtr = -20;
 	 dr4bl_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 	 dr4bl_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
  }
@@ -136,20 +137,6 @@ if (master.get_digital(DIGITAL_R1))
  dr4bl_mtr = 0;
  }
  pros::delay(20);
-//claw control
-if (master.get_digital(DIGITAL_X))
-{
-	claw_mtr = 50;
-}
-else if (master.get_digital(DIGITAL_B))
-{
-	claw_mtr = -50;
-}
-else
-{
-claw_mtr = 0;
-}
-pros::delay(20);
 
  }
 
@@ -181,5 +168,4 @@ pros::delay(20);
 void autonomous()
 {
 PIDforward(500);
-PIDclaw
 }
