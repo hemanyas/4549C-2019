@@ -50,10 +50,10 @@ do
 float average = (left_mtr.get_position() + right_mtr.get_position()+ backright_mtr.get_position() + backleft_mtr.get_position()) / 4;
 error = (setpoint*ticks_to_deg) - average;
 power = error*kP;
-// printf("power %f\n" , power);
-// printf("error %f\n" , error);
-// printf("average %f\n" , average);
-// printf("setoiubt %f\n" , (setpoint*ticks_to_deg));
+printf("power %f\n" , power);
+printf("error %f\n" , error);
+printf("average %f\n" , average);
+printf("setoiubt %f\n" , (setpoint*ticks_to_deg));
 // printf("left_mtr %f\n" , left_mtr.get_position());
 left_mtr = -power;
 right_mtr = power;

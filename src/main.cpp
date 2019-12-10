@@ -104,11 +104,11 @@ void opcontrol()
 //intake control
 if(master.get_digital(DIGITAL_R1))
 {
-	claw_mtr.move(50);
+	claw_mtr.move(80);
 }
 else if (master.get_digital(DIGITAL_R2))
 {
-	claw_mtr.move(-50);
+	claw_mtr.move(-80);
 }
 else
 {
@@ -126,8 +126,8 @@ if (master.get_digital(DIGITAL_L1))
  }
  else if (master.get_digital(DIGITAL_L2))
  {
-	 dr4bl_mtr = -20;
-	 dr4br_mtr = -20;
+	 dr4bl_mtr = -40;
+	 dr4br_mtr = -40;
 	 dr4bl_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 	 dr4bl_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
  }
@@ -167,5 +167,11 @@ if (master.get_digital(DIGITAL_L1))
 
 void autonomous()
 {
-PIDforward(500);
+// PIDforward(1000);
+PIDleft(150);
+// PIDforward();
+// PIDclaw();
+// PIDforward();
+// PIDleft();
+// PIDforward();
 }
