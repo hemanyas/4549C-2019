@@ -20,7 +20,7 @@ right_mtr = power;
 backleft_mtr = power;
 backright_mtr = power;
 pros::delay(20);
-}while(fabs(error) > 10);
+}while(fabs(error) > 5);
 left_mtr.tare_position();
 right_mtr.tare_position();
 backleft_mtr.tare_position();
@@ -44,21 +44,21 @@ void PIDleft(float setpoint)
 float error;
 float power;
 float kP = 0.45;
-int ticks_to_deg = 3;
+int ticks_to_deg = 2;
 do
 {
-float average = (left_mtr.get_position() + right_mtr.get_position()+ backright_mtr.get_position() + backleft_mtr.get_position()) / 4;
-error = (setpoint*ticks_to_deg) - average;
+float average = (left_mtr.get_position() + right_mtr.get_position() + backright_mtr.get_position() + backleft_mtr.get_position() / 4);
+error = (setpoint* ticks_to_deg) - average;
 power = error*kP;
+printf("leftposition %f\n", left_mtr.get_position());
 printf("power %f\n" , power);
 printf("error %f\n" , error);
 printf("average %f\n" , average);
 printf("setoiubt %f\n" , (setpoint*ticks_to_deg));
-// printf("left_mtr %f\n" , left_mtr.get_position());
-left_mtr = -power;
-right_mtr = power;
-backleft_mtr = -power;
-backright_mtr = power;
+left_mtr = power;
+right_mtr = -power;
+backleft_mtr = power;
+backright_mtr = -power;
 pros::delay(20);
 } while(fabs(error) > 5);
 left_mtr.tare_position();

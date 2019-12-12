@@ -118,23 +118,26 @@ pros::delay(20);
 //dr4b control
 if (master.get_digital(DIGITAL_L1))
  {
-	 dr4bl_mtr = 400;
-	 dr4br_mtr = 400;
-	 printf("dr4br_mtr %f\n", dr4br_mtr.get_position());
-	 dr4bl_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-	 dr4br_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	 dr4bl_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+	 dr4br_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+	 dr4bl_mtr.move(400);
+	 dr4br_mtr.move(400);
+	 // printf("dr4br_mtr %f\n", dr4br_mtr.get_position());
+
  }
  else if (master.get_digital(DIGITAL_L2))
  {
-	 dr4bl_mtr = -40;
-	 dr4br_mtr = -40;
-	 dr4bl_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-	 dr4bl_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	 dr4bl_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+	 dr4br_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+	 dr4bl_mtr.move(-40);
+	 dr4br_mtr.move(-40);
  }
  else
  {
  dr4br_mtr = 0;
  dr4bl_mtr = 0;
+ dr4bl_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+ dr4br_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
  }
  pros::delay(20);
 
@@ -167,11 +170,13 @@ if (master.get_digital(DIGITAL_L1))
 
 void autonomous()
 {
-// PIDforward(1000);
-PIDleft(150);
-// PIDforward();
+PIDforward(500);
+PIDleft(335);
 // PIDclaw();
 // PIDforward();
 // PIDleft();
 // PIDforward();
+// PIDleft(-450);
+// PIDforward();
+// PIDclaw();
 }
