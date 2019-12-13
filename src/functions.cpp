@@ -15,7 +15,7 @@ power = error*kP;
 printf("power_forward %f\n" , power);
 printf("error_forward %f\n" , error);
 printf("average_forward %f\n" , average);
-left_mtr = power;
+left_mtr = -power;
 right_mtr = power;
 backleft_mtr = power;
 backright_mtr = power;
@@ -44,17 +44,20 @@ void PIDleft(float setpoint)
 float error;
 float power;
 float kP = 0.45;
-int ticks_to_deg = 2;
+int ticks_to_deg = 3;
 do
 {
-float average = (left_mtr.get_position() + right_mtr.get_position() + backright_mtr.get_position() + backleft_mtr.get_position() / 4);
+float average = (left_mtr.get_position() + -right_mtr.get_position() + -backright_mtr.get_position() + backleft_mtr.get_position()) / 4;
 error = (setpoint* ticks_to_deg) - average;
 power = error*kP;
 printf("leftposition %f\n", left_mtr.get_position());
-printf("power %f\n" , power);
-printf("error %f\n" , error);
-printf("average %f\n" , average);
-printf("setoiubt %f\n" , (setpoint*ticks_to_deg));
+printf("rightposition %f\n", right_mtr.get_position());
+printf("BLposition %f\n", backleft_mtr.get_position());
+printf("BRposition %f\n", backright_mtr.get_position());
+// printf("power %f\n" , power);
+// printf("error %f\n" , error);
+// printf("average %f\n" , average);
+// printf("setoiubt %f\n" , (setpoint*ticks_to_deg));
 left_mtr = power;
 right_mtr = -power;
 backleft_mtr = power;

@@ -170,9 +170,9 @@ if (master.get_digital(DIGITAL_L1))
 
 void autonomous()
 {
-PIDforward(500);
-PIDleft(335);
-// PIDclaw();
+PIDforward(-1000);
+PIDleft(332);
+PIDclaw(100);
 // PIDforward();
 // PIDleft();
 // PIDforward();
