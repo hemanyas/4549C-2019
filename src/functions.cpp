@@ -6,19 +6,19 @@ void PIDforward(float setpoint)
 {
 float error;
 float power;
-float kP = 0.45;
+float kP = 1;
 do
 {
-float average = (left_mtr.get_position() + right_mtr.get_position() + backright_mtr.get_position() + backleft_mtr.get_position()) / 4;
+float average = (left_mtr.get_position() + -right_mtr.get_position() + -backright_mtr.get_position() + backleft_mtr.get_position()) / 4;
 error = setpoint - average;
 power = error*kP;
 printf("power_forward %f\n" , power);
 printf("error_forward %f\n" , error);
 printf("average_forward %f\n" , average);
-left_mtr = -power;
-right_mtr = power;
-backleft_mtr = power;
-backright_mtr = power;
+left_mtr = (power)* 0.3;
+right_mtr = (-power)* 0.3;
+backleft_mtr = (-power)* 0.3;
+backright_mtr = (-power)* 0.3;
 pros::delay(20);
 }while(fabs(error) > 5);
 left_mtr.tare_position();
@@ -59,9 +59,9 @@ printf("BRposition %f\n", backright_mtr.get_position());
 // printf("average %f\n" , average);
 // printf("setoiubt %f\n" , (setpoint*ticks_to_deg));
 left_mtr = power;
-right_mtr = -power;
+right_mtr = power;
 backleft_mtr = power;
-backright_mtr = -power;
+backright_mtr = power;
 pros::delay(20);
 } while(fabs(error) > 5);
 left_mtr.tare_position();

@@ -1,7 +1,8 @@
 #include "main.h"
 #include "motors.h"
 #include "functions.h"
-int motorspeed = 127;
+// int motorspeed = 127;
+// int motorspeed = 114;
 /**
  * A callback function for LLEMU's center button.
  *
@@ -85,8 +86,8 @@ void opcontrol()
  		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
  		                 (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
  		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
- 		int left = master.get_analog(ANALOG_LEFT_Y);
- 		int right = -(master.get_analog(ANALOG_RIGHT_Y));
+ 		int left = (master.get_analog(ANALOG_LEFT_Y)) * 0.8;
+ 		int right = -(master.get_analog(ANALOG_RIGHT_Y)) * 0.8;
 
 
  		left_mtr = left;
@@ -170,13 +171,20 @@ if (master.get_digital(DIGITAL_L1))
 
 void autonomous()
 {
-PIDforward(-1000);
-PIDleft(332);
-PIDclaw(100);
-// PIDforward();
-// PIDleft();
-// PIDforward();
-// PIDleft(-450);
-// PIDforward();
-// PIDclaw();
+	PIDforward(2200);
+	pros::delay(500);
+	PIDdr4b(500);
+	PIDforward(-670);
+	pros::delay(2000);
+// PIDforward(670);
+// PIDdr4b(200);
+// PIDforward(500);
+// PIDleft(350);
+// PIDclaw(500);
+// PIDforward(500);
+// PIDleft(300);
+// PIDforward(400);
+// PIDleft(500);
+// PIDforward(500);
+// PIDclaw(100);
 }
