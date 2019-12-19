@@ -3,7 +3,7 @@
 #include "main.h"
 
 #define LEFT_MTR 5
-#define RIGHT_MTR 10
+#define RIGHT_MTR 8
 #define BACKLEFT_MTR 11
 #define BACKRIGHT_MTR 18
 #define DR4BL_MTR 13

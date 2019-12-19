@@ -171,15 +171,15 @@ if (master.get_digital(DIGITAL_L1))
 
 void autonomous()
 {
-	PIDforward(2200);
-	pros::delay(500);
-	PIDdr4b(500);
-	PIDforward(-670);
-	pros::delay(2000);
-// PIDforward(670);
-// PIDdr4b(200);
-// PIDforward(500);
-// PIDleft(350);
+	//one point
+	// PIDforward(2200);
+	// pros::delay(500);
+	// PIDforward(-700);
+	// pros::delay(2000);
+//4 point
+
+PIDforward(670);
+PIDleft(300);
 // PIDclaw(500);
 // PIDforward(500);
 // PIDleft(300);
