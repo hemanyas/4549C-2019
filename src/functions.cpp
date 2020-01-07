@@ -56,10 +56,11 @@ float kP = 0.45;
 int ticks_to_deg = 3;
 do
 {
-float average = (left_mtr.get_position() + right_mtr.get_position() + backright_mtr.get_position() + backleft_mtr.get_position()) / 4;
+float average = (fabs(left_mtr.get_position()) + fabs(right_mtr.get_position()) + fabs(backright_mtr.get_position()) + fabs(backleft_mtr.get_position())) / 4;
 error = (setpoint* ticks_to_deg) - average;
 power = error*kP;
 printf("leftposition %f\n", left_mtr.get_position());
+printf("average %f\n" , average);
 printf("error %f\n" , error);
 printf("power %f\n" , power);
 // printf("power %f\n" , power);
@@ -81,8 +82,6 @@ right_mtr.move(0);
 backleft_mtr.move(0);
 backright_mtr.move(0);
 }
-
-
 void PIDdr4b(float setpoint)
 {
 float error;
