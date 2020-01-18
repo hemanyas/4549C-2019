@@ -9,7 +9,7 @@
 #define DR4BL_MTR 13
 #define DR4BR_MTR 15
 #define CLAW_MTR 16
-#define INTAKE_MTR 11
+#define INTAKE_MTR 3
 
 #define REVERSE 1
 #define NOT_REVERSE 0

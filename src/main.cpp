@@ -86,8 +86,8 @@ void opcontrol()
  		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
  		                 (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
  		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
- 		int left = (master.get_analog(ANALOG_LEFT_Y)) * 0.8;
- 		int right = -(master.get_analog(ANALOG_RIGHT_Y)) * 0.8;
+ 		int left = (master.get_analog(ANALOG_LEFT_Y)) * 0.9;
+ 		int right = -(master.get_analog(ANALOG_RIGHT_Y)) * 0.9;
 
 
  		left_mtr = left;
@@ -145,7 +145,6 @@ if (master.get_digital(DIGITAL_L1))
  }
 
 
-
 // if(master.get_digital(DIGITAL_R1))
 // {
 // arm_left_mtr = 50;
@@ -172,19 +171,10 @@ if (master.get_digital(DIGITAL_L1))
 void autonomous()
 {
 	//one point
-	// PIDforward(2200);
-	// pros::delay(500);
-	// PIDforward(-700);
-	// pros::delay(2000);
-//4 point
+	PIDforward(2200);
+	pros::delay(500);
+	PIDforward(-700);
+	pros::delay(2000);
+	//tower
 
-PIDforward(670);
-PIDleft(300);
-// PIDclaw(500);
-// PIDforward(500);
-// PIDleft(300);
-// PIDforward(400);
-// PIDleft(-500);
-// PIDforward(500);
-// PIDclaw(100);
 }

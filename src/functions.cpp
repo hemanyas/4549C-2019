@@ -39,7 +39,6 @@ right_mtr.move(0);
 backleft_mtr.move(0);
 backright_mtr.move(0);
 }
-
 // while (fabs(error) > 10)
 // {
 //  error = setpoint – average;
@@ -47,7 +46,6 @@ backright_mtr.move(0);
 //  power = error*kP + integral*kI;
 //   wait 15 mSec;
 // }
-
 void PIDleft(float setpoint)
 {
 float error;
