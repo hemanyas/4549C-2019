@@ -27,7 +27,7 @@ void on_center_button() {
  */
 void initialize() {
 	pros::lcd::initialize();
-	pros::lcd::set_text(4, "ight ima head out");
+	pros::lcd::set_text(4, "akashdeep for the win;)");
 
 	pros::lcd::register_btn1_cb(on_center_button);
 }
@@ -102,34 +102,20 @@ void opcontrol()
  backright_mtr.get_position();
  backleft_mtr.get_position();
 
-//intake control
-if(master.get_digital(DIGITAL_R1))
-{
-	claw_mtr.move(80);
-}
-else if (master.get_digital(DIGITAL_R2))
-{
-	claw_mtr.move(-80);
-}
-else
-{
-	claw_mtr = 0;
-}
-pros::delay(20);
 //dr4b control
-if (master.get_digital(DIGITAL_L1))
+if (master.get_digital(DIGITAL_R1))
  {
-	 dr4bl_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-	 dr4br_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+	 // dr4bl_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+	 // dr4br_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
 	 dr4bl_mtr.move(400);
 	 dr4br_mtr.move(400);
 	 // printf("dr4br_mtr %f\n", dr4br_mtr.get_position());
 
  }
- else if (master.get_digital(DIGITAL_L2))
+ else if (master.get_digital(DIGITAL_R2))
  {
-	 dr4bl_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-	 dr4br_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+	 // dr4bl_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+	 // dr4br_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
 	 dr4bl_mtr.move(-40);
 	 dr4br_mtr.move(-40);
  }
@@ -141,6 +127,22 @@ if (master.get_digital(DIGITAL_L1))
  dr4br_mtr.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
  }
  pros::delay(20);
+
+ if (master.get_digital(DIGITAL_L1))
+{
+	intakeL_mtr = 100;
+	intakeR_mtr = -100;
+}
+ else if (master.get_digital(DIGITAL_L2))
+ {
+	 intakeL_mtr = -100;
+	 intakeR_mtr = 100;
+ }
+ else
+ {
+	 intakeL_mtr = 0;
+	 intakeR_mtr = 0;
+ }
 
  }
 

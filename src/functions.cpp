@@ -117,9 +117,3 @@ pros::delay(20);
 claw_mtr.tare_position();
 claw_mtr.move(0);
 }
-
-
-void myintake(float d, float v)
-{
-intake_mtr.move_relative(d,v);
-}

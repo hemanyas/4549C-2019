@@ -9,7 +9,8 @@
 #define DR4BL_MTR 13
 #define DR4BR_MTR 15
 #define CLAW_MTR 16
-#define INTAKE_MTR 3
+#define INTAKEL_MTR 4
+#define INTAKER_MTR 7
 
 #define REVERSE 1
 #define NOT_REVERSE 0
@@ -22,7 +23,8 @@ extern pros::Motor backleft_mtr;
 extern pros::Motor dr4bl_mtr;
 extern pros::Motor dr4br_mtr;
 extern pros::Motor claw_mtr;
-extern pros::Motor intake_mtr;
+extern pros::Motor intakeL_mtr;
+extern pros::Motor intakeR_mtr;
 
 
 
