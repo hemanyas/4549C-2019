@@ -130,13 +130,13 @@ if (master.get_digital(DIGITAL_R1))
 
  if (master.get_digital(DIGITAL_L1))
 {
-	intakeL_mtr = 100;
-	intakeR_mtr = -100;
+	intakeL_mtr = -200;
+	intakeR_mtr = 200;
 }
  else if (master.get_digital(DIGITAL_L2))
  {
-	 intakeL_mtr = -100;
-	 intakeR_mtr = 100;
+	 intakeL_mtr = 200;
+	 intakeR_mtr = -200;
  }
  else
  {

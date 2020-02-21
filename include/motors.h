@@ -2,15 +2,14 @@
 #define MOTORS_H
 #include "main.h"
 
-#define LEFT_MTR 5
-#define RIGHT_MTR 8
-#define BACKLEFT_MTR 11
-#define BACKRIGHT_MTR 18
-#define DR4BL_MTR 13
-#define DR4BR_MTR 15
-#define CLAW_MTR 16
-#define INTAKEL_MTR 4
-#define INTAKER_MTR 7
+#define LEFT_MTR 2
+#define RIGHT_MTR 9
+#define BACKLEFT_MTR 14
+#define BACKRIGHT_MTR 16
+#define DR4BL_MTR 12
+#define DR4BR_MTR 20
+#define INTAKEL_MTR 1
+#define INTAKER_MTR 10
 
 #define REVERSE 1
 #define NOT_REVERSE 0
